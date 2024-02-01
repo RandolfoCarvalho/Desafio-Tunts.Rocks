@@ -42,7 +42,7 @@ def main():
         .execute()
     )
     values = result.get("values", [])
-    lista_de_students = []
+    list_of_students = []
     if not values:
         print("No data found.")
     else:
@@ -59,13 +59,36 @@ def main():
             student = Student(registration, name, float(absences), int(p1), int(p2), int(p3))
             student.calculate_situation()
             student.verify_situation()
-            lista_de_students.append(student)
+            list_of_students.append(student)
 
-    for obj in lista_de_students:
-      print(obj.Name + " - Mean: " + str(obj.Mean) + "-Nota para aprovação: " + str(obj.NAF))
+  #Add info to Google Sheets
+    addValues_G = [] 
+    addValues_H = [] 
+    for obj in list_of_students:
+        addValues_G.append([obj.Situation.name]) 
+        addValues_H.append([obj.NAF])
+    result_G = (
+        sheet.values()
+        .update(
+            spreadsheetId=SAMPLE_SPREADSHEET_ID,
+            range="G4:G",
+            valueInputOption="USER_ENTERED",
+            body={"values": addValues_G}
+        )
+        .execute()
+    )
+    result_H = (
+        sheet.values()
+        .update(
+            spreadsheetId=SAMPLE_SPREADSHEET_ID,
+            range="H4:H",
+            valueInputOption="USER_ENTERED",
+            body={"values": addValues_H}
+        )
+        .execute()
+    )
+
   except HttpError as err:
     print(err)  
-
-
 if __name__ == "__main__":
   main()
