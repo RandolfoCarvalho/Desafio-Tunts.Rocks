@@ -15,7 +15,7 @@ class Student:
         self.Situation = None
     def __str__(self):
         return (
-            f"Matrícula: {self.Registration}, Nome: {self.Name}, Faltas: {self.Absences}, "
+            f"Registration: {self.Registration}, Name: {self.Name}, Absences: {self.Absences}, "
             f"P1: {self.P1}, P2: {self.P2}, P3: {self.P3}, Mean: {self.Mean}, "
             f"Situation: {self.Situation} NAF: {self.NAF} "
         )
