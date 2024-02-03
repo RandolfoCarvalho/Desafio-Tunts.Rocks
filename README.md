@@ -6,6 +6,7 @@ pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-
 
 python main.py
 
-#Caso ocorra algum erro de não reconhecer o comando pip, recomendo verificar o path das variaveis de ambiente ou resolver conflitos de env 
+#Caso ocorra algum erro de não reconhecer o comando pip
+#recomendo verificar o path das variaveis de ambiente ou resolver conflitos de env 
 
 
